@@ -1,0 +1,23 @@
+use("taskslist")
+
+db.taks.drop()
+
+db.createCollection("tasks", {
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            required: ["name"],
+            properties: {
+                name: {
+                    bsonType: 'string'
+                },
+                description: {
+                    bsonType: 'string'
+                },
+                status: {
+                    bsonType: 'bool'
+                },
+            }
+        }
+    }
+})
